@@ -1,4 +1,12 @@
+
 import React, { Component } from 'react';
+//React-Router-Dom
+import { Route } from 'react-router-dom'
+
+//Containers
+import PostListContainer from './containers/PostListContainer'
+
+
 import logo from './logo.svg';
 import './App.css';
 
@@ -8,11 +16,15 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Welcome to Readable Udacity</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <Route exact path="/posts" component={PostListContainer} />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
