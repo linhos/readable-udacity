@@ -1,12 +1,22 @@
 
 import React, { Component } from 'react'
 
+import { Link } from 'react-router-dom';
 
 class PostDetailComponent extends Component {
     render () {
 
         return (
             <span>
+                <div className="row">
+                    <div className="col">
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item"><Link className="btn btn-link btn-sm" to={`/posts`} >Home</Link></li>
+                            <li className="breadcrumb-item"><Link className="btn btn-link btn-sm" to={`/posts`} >Posts</Link></li>
+                            <li className="breadcrumb-item active">{this.props.post.title}</li>
+                        </ol>
+                    </div>
+                </div>
                 <table className="table">
                     <thead>
                         <tr>

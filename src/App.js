@@ -1,11 +1,12 @@
 
 import React, { Component } from 'react';
 //React-Router-Dom
-import { Route } from 'react-router-dom'
+import { Router, Route, hashHistory } from 'react-router';
 
 //Containers
 import PostListContainer from './containers/PostListContainer'
 import PostDetailContainer from './containers/PostDetailContainer'
+import PostCategoryContainer from './containers/PostCategoryContainer'
 
 import logo from './logo.svg';
 import './App.css';
@@ -21,8 +22,18 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <div className="col">
-              <Route exact path="/posts" component={PostListContainer} />
-              <Route exact path="/posts/detail/:id" component={PostDetailContainer} />
+              <Route exact path="/posts" render={({ history }) => (
+                <PostListContainer /> 
+              )}/>
+
+              <Route exact path="/posts/detail/:id" render={({ history }) => (
+                <PostDetailContainer /> 
+              )}/>
+
+              <Route exact path="/:category/posts" render={({ history }) => (
+                <PostCategoryContainer /> 
+              )}/>
+
             </div>
           </div>
         </div>

@@ -28,7 +28,7 @@ class PostDetailContainer extends Component {
 
     render () {
         return (
-            <PostDetailComponent post = {this.props.state.posts.posts} />
+            <PostDetailComponent post = {this.props.state.posts.post} />
         )
     }
 }

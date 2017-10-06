@@ -10,7 +10,8 @@ import {
 } from '../actions'
 
 const initialState = {
-    'posts': []
+    'posts': [],
+    'post': []
 }
 
 function postReducer(state=initialState, action) {
@@ -22,7 +23,7 @@ function postReducer(state=initialState, action) {
         
         case 'POST_DETAIL':
             return Object.assign({}, state, {
-                'posts': action.post
+                'post': action.post
             });
         
         case 'POST_VOTE_UP':
