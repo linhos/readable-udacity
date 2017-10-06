@@ -19,3 +19,10 @@ export const postVoteDownAction = postId => {
         postId
     }
 }
+
+export const postDetailAction = post => {
+    return {
+        type: 'POST_DETAIL',
+        post
+    }
+}

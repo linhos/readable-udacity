@@ -4,7 +4,8 @@ import { combineReducers } from 'redux'
 import {
     POST_LIST,
     POST_VOTE_UP,
-    POST_VOTE_DOWN
+    POST_VOTE_DOWN,
+    POST_DETAIL
     
 } from '../actions'
 
@@ -17,6 +18,11 @@ function postReducer(state=initialState, action) {
         case 'POST_LIST':
             return Object.assign({}, state, {
                 'posts': action.posts
+            });
+        
+        case 'POST_DETAIL':
+            return Object.assign({}, state, {
+                'posts': action.post
             });
         
         case 'POST_VOTE_UP':
