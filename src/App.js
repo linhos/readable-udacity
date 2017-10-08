@@ -1,7 +1,8 @@
 
 import React, { Component } from 'react';
 //React-Router-Dom
-import { Router, Route, hashHistory } from 'react-router';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
+
 
 //Containers
 import PostListContainer from './containers/PostListContainer'
@@ -12,6 +13,11 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  PostCategoryContainer = (props) => {
+    return (<PostCategoryContainer props={props} />)
+  }
+
   render() {
     return (
       <div className="App">
@@ -30,9 +36,7 @@ class App extends Component {
                 <PostDetailContainer /> 
               )}/>
 
-              <Route exact path="/:category/posts" render={({ history }) => (
-                <PostCategoryContainer /> 
-              )}/>
+              <Route exact path="/:category/posts" component={this.PostCategoryContainer} />
 
             </div>
           </div>

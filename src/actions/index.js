@@ -26,3 +26,10 @@ export const postDetailAction = post => {
         post
     }
 }
+
+export const PostCategoryListAction = categoryPosts => {
+    return {
+        type: 'POST_CATEGORY_LIST',
+        categoryPosts
+    }
+}

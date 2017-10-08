@@ -5,13 +5,15 @@ import {
     POST_LIST,
     POST_VOTE_UP,
     POST_VOTE_DOWN,
-    POST_DETAIL
+    POST_DETAIL,
+    POST_CATEGORY_LIST
     
 } from '../actions'
 
 const initialState = {
     'posts': [],
-    'post': []
+    'post': [],
+    'categoryPosts': []
 }
 
 function postReducer(state=initialState, action) {
@@ -37,6 +39,11 @@ function postReducer(state=initialState, action) {
             let down = downstate.posts.find(b => b.id === action.postId);
             down.voteScore = down.voteScore - 1
             return downstate;
+
+        case 'POST_CATEGORY_LIST':
+            return Object.assign({}, state, {
+                'categoryPosts': action.categoryPosts
+            })    
         
         default: {
             return state;

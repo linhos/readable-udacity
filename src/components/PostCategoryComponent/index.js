@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+
+import React, {Component} from 'react'
 
 import { Link } from 'react-router-dom';
 
 
-class PostListComponent extends Component {
+class PostCategoryComponent extends Component {
 
     render () {
         return (
@@ -14,7 +15,6 @@ class PostListComponent extends Component {
                     <th>#</th>
                     <th>Title</th>
                     <th>Author</th>
-                    <th>Category</th>
                     <th>Number of Comments</th>
                     <th>Vote Score</th>
                     <th></th>
@@ -29,7 +29,6 @@ class PostListComponent extends Component {
                             <td>{post.id}</td>
                             <td>{post.title}</td>
                             <td>{post.author}</td>
-                            <td>{post.category}</td>
                             <td>nº de comentarios</td>
                             <td>{post.voteScore}</td>
                             <td><button type="button" onClick={() => this.props.voteUp(post.id)} className="btn btn-primary btn-sm">Vote Up</button></td>
@@ -46,4 +45,4 @@ class PostListComponent extends Component {
 
 }
 
-export default PostListComponent;
+export default PostCategoryComponent;
