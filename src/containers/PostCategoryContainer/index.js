@@ -10,7 +10,16 @@ import PostCategoryComponent from '../../components/PostCategoryComponent'
 class PostCategoryContainer extends Component {
 
     componentDidMount(){
-        fetch(`http://localhost:3001/redux/posts`,{
+        this.fetchPostsCategory(this.props.props.match.params.category)
+    }    
+    
+    componentWillReceiveProps (nextProps) {
+        if(nextProps.props.match.params.category !== this.props.props.match.params.category)
+            this.fetchPostsCategory(nextProps.props.match.params.category)
+    }
+
+    fetchPostsCategory(category) {
+        fetch(`http://localhost:3001/${category}/posts`, {
             headers: { 'Authorization': 'mi-fake-header' }
         })
         .then(res=>{
@@ -21,14 +30,10 @@ class PostCategoryContainer extends Component {
         })
         .catch(err => {
             console.log(err)
-        })
+        });
     }
 
-    componentWillReceiveProps (nextProps) {
-        console.log(this.props)
-        //if(nextProps.props.match.params.id !== this.props.props.match.params.id)
-            //this.fetchTicketsDepartamentos(nextProps.props.match.params.id)
-    }
+
 
     render (){
         return (

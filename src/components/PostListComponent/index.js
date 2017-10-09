@@ -29,7 +29,11 @@ class PostListComponent extends Component {
                             <td>{post.id}</td>
                             <td>{post.title}</td>
                             <td>{post.author}</td>
-                            <td>{post.category}</td>
+                            <td>
+                                <Link className="btn btn-link btn-sm" to={`/${post.category}/posts`} >
+                                    {post.category}
+                                </Link>
+                            </td>
                             <td>nº de comentarios</td>
                             <td>{post.voteScore}</td>
                             <td><button type="button" onClick={() => this.props.voteUp(post.id)} className="btn btn-primary btn-sm">Vote Up</button></td>
