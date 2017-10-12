@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 //Redux
 import { connect } from 'react-redux'
 //actions
-import {postListAction, postVoteDownAction, postVoteUpAction} from '../../actions'
+import {postListAction, postVoteDownAction, postVoteUpAction, sortByAuthorAction} from '../../actions'
 //components
 import PostListComponent from '../../components/PostListComponent'
 
@@ -25,10 +25,6 @@ class PostListContainer extends Component {
         })
     }
 
-    fetchPost () {
-        
-    }
-
     onClickVoteUp = value => {
         this.props.dispatch(postVoteUpAction(value))
     }
@@ -37,12 +33,17 @@ class PostListContainer extends Component {
         this.props.dispatch(postVoteDownAction(value))
     }
 
+    onClickSortByAuthor = value => {
+        this.props.dispatch(sortByAuthorAction(value, this.props.state.posts.posts))
+    }
+
     render () {
         return (
             <PostListComponent 
                 posts = {this.props.state.posts.posts} 
                 voteUp = {this.onClickVoteUp} 
-                voteDown={this.onclickVoteDown} />
+                voteDown = {this.onclickVoteDown} 
+                sortByAuthor = {this.onClickSortByAuthor} />
         )
     }
 

@@ -13,7 +13,11 @@ class PostListComponent extends Component {
                     <tr>
                     <th>#</th>
                     <th>Title</th>
-                    <th>Author</th>
+                    <th>
+                        <button type="button" onClick={() => this.props.sortByAuthor('DESC')} className="btn btn-danger btn-sm">
+                            Author
+                        </button>
+                    </th>
                     <th>Category</th>
                     <th>Number of Comments</th>
                     <th>Vote Score</th>
@@ -28,7 +32,10 @@ class PostListComponent extends Component {
                         <tr key={post.timestamp.toString()}>
                             <td>{post.id}</td>
                             <td>{post.title}</td>
-                            <td>{post.author}</td>
+                            <td>
+                      
+                                    {post.author}
+                            </td>
                             <td>
                                 <Link className="btn btn-link btn-sm" to={`/${post.category}/posts`} >
                                     {post.category}

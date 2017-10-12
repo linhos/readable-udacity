@@ -33,3 +33,10 @@ export const PostCategoryListAction = categoryPosts => {
         categoryPosts
     }
 }
+
+export const sortByAuthorAction = (sort, posts) => {
+    return {
+        type: 'SORT_BY_AUTHOR',
+        posts
+    }
+}

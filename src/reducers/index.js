@@ -6,18 +6,38 @@ import {
     POST_VOTE_UP,
     POST_VOTE_DOWN,
     POST_DETAIL,
-    POST_CATEGORY_LIST
+    POST_CATEGORY_LIST,
+
+    SORT_BY_AUTHOR
     
 } from '../actions'
 
 const initialState = {
     'posts': [],
     'post': [],
-    'categoryPosts': []
+    'categoryPosts': [],
+    'sort': 'DESC'
 }
 
 function postReducer(state=initialState, action, ) {
     switch(action.type){
+
+        case 'SORT_BY_AUTHOR':
+
+                posts: action.posts.sort(function(a, b) {
+                    var nameA = a.id.toUpperCase(); // ignore upper and lowercase
+                    var nameB = b.id.toUpperCase(); // ignore upper and lowercase
+                    if (state.sort == 'DESC') {
+                        state.sort = 'ASC'
+                        return 1;
+                    }
+                   else {
+                        state.sort = 'DESC'
+                        return -1;
+                    }
+                    
+                  }); 
+
         case 'POST_LIST':
 
             return Object.assign({}, state, {
