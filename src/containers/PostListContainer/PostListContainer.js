@@ -11,10 +11,6 @@ import PostListComponent from '../../components/PostListComponent'
 class PostListContainer extends Component {
 
     componentDidMount() {
-        this.fetchPost()
-    }
-
-    fetchPost () {
         fetch(`http://localhost:3001/posts`,{
             headers: { 'Authorization': 'mi-fake-header' }
         })
@@ -27,6 +23,10 @@ class PostListContainer extends Component {
         .catch(err => {
             console.log(err)
         })
+    }
+
+    fetchPost () {
+        
     }
 
     onClickVoteUp = value => {
@@ -49,6 +49,7 @@ class PostListContainer extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     return {state}
 }
 

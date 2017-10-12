@@ -7,6 +7,8 @@ import { postDetailAction } from '../../actions'
 //components
 import PostDetailComponent from '../../components/PostDetailComponent'
 
+import PostCommentContainer from '../PostCommentContainer'
+
 
 class PostDetailContainer extends Component {
 
@@ -26,12 +28,13 @@ class PostDetailContainer extends Component {
         })
     }
 
-
-      
-
     render () {
         return (
-            <PostDetailComponent post = {this.props.state.posts.post} />
+            <span>
+                <PostDetailComponent post = {this.props.state.posts.post} />
+                <hr />
+                <PostCommentContainer postId = {this.props.props.match.params.id} />
+            </span>
         )
     }
 }

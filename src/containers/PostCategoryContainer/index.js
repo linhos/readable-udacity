@@ -33,8 +33,6 @@ class PostCategoryContainer extends Component {
         });
     }
 
-
-
     render (){
         return (
             <PostCategoryComponent posts  = {this.props.state.posts.categoryPosts} />
