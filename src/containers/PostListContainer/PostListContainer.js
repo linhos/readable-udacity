@@ -22,7 +22,7 @@ class PostListContainer extends Component {
         this.props.postVoteDownAction(value)
     }
 
-    onClickSortByAuthor = value => {
+    onClickSortByAuthor = (value, posts) => {
         this.props.sortByAuthorAction(value, this.props.state.posts.posts)
     }
 

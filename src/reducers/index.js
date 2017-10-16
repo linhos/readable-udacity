@@ -29,20 +29,16 @@ function postReducer(state=initialState, action, ) {
     switch(action.type){
 
         case 'SORT_BY_AUTHOR':
-
-                posts: action.posts.sort(function(a, b) {
-                    var nameA = a.title.toUpperCase(); // ignore upper and lowercase
-                    var nameB = b.title.toUpperCase(); // ignore upper and lowercase
-                    if (state.sort == 'DESC') {
-                        state.sort = 'ASC'
-                        return 1;
-                    }
-                   
-                    state.sort = 'DESC'
-                    return -1;
-                    
-                    
-                  }); 
+            let sortState = Object.assign({}, state, {});
+            console.log(sortState.sort)
+            if (sortState.sort == 'DESC' ){
+                sortState.sort = 'ASC'
+                sortState.posts.sort((a,b) => a.author < b.author)   
+            } else {
+                sortState.posts.sort((a,b) => a.author > b.author)
+                sortState.sort = 'DESC'
+            }
+            return sortState;
 
         case 'POST_LIST_PENDING':
 
