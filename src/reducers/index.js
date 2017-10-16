@@ -5,7 +5,8 @@ import {
     POST_LIST,
     POST_VOTE_UP,
     POST_VOTE_DOWN,
-    POST_DETAIL,
+    POST_DETAIL_PENDING,
+    POST_DETAIL_SUCCESS,
     POST_CATEGORY_LIST,
     POST_LIST_SUCCESS,
     POST_LIST_PENDING,
@@ -29,16 +30,16 @@ function postReducer(state=initialState, action, ) {
         case 'SORT_BY_AUTHOR':
 
                 posts: action.posts.sort(function(a, b) {
-                    var nameA = a.id.toUpperCase(); // ignore upper and lowercase
-                    var nameB = b.id.toUpperCase(); // ignore upper and lowercase
+                    var nameA = a.title.toUpperCase(); // ignore upper and lowercase
+                    var nameB = b.title.toUpperCase(); // ignore upper and lowercase
                     if (state.sort == 'DESC') {
                         state.sort = 'ASC'
                         return 1;
                     }
-                   else {
-                        state.sort = 'DESC'
-                        return -1;
-                    }
+                   
+                    state.sort = 'DESC'
+                    return -1;
+                    
                     
                   }); 
 
@@ -66,13 +67,20 @@ function postReducer(state=initialState, action, ) {
         case 'POST_COMMENT_SUCCESS':
             let cState = Object.assign({}, state, {});
             let cUp = cState.posts.find(b => b.id === action.postId);
-            console.log(action.postId)
-            console.log(action.comments)
             cUp.commentsNumber = action.comments
        
-        case 'POST_DETAIL':
+        case 'POST_DETAIL_PENDING':
+        
+            return {
+                ...state,
+                
+            }
+            
+        case 'POST_DETAIL_SUCCESS':
+        
             return Object.assign({}, state, {
                 'post': action.post
+                
             });
         
         case 'POST_VOTE_UP':

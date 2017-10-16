@@ -44,10 +44,17 @@ export const postVoteDownAction = postId => {
     }
 }
 
-export const postDetailAction = post => {
+export function postDetailSuccessAction (post) {
     return {
-        type: 'POST_DETAIL',
+        type: 'POST_DETAIL_SUCCESS',
         post
+    }
+}
+
+export function postDetailPendingAction (bool) {
+    return {
+        type: 'POST_DETAIL_PENDING',
+        pending: bool
     }
 }
 
@@ -65,6 +72,22 @@ export const sortByAuthorAction = (sort, posts) => {
     }
 }
 
+
+
+export function postDetailFetchData(url) {
+    return (dispatch) => {
+        dispatch(postDetailPendingAction(true));
+
+        fetch(url, {headers: { 'Authorization': 'mi-fake-header' }})
+            .then((response) => {
+                dispatch(postDetailPendingAction(false));
+
+                return response;
+            })
+            .then((response) => response.json())
+            .then((item) => dispatch(postDetailSuccessAction(item)))
+    };
+}
 
 export function itemsFetchData(url) {
     return (dispatch) => {

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 //Redux
 import { connect } from 'react-redux'
 //actions
-import { postDetailAction } from '../../actions'
+import { postDetailFetchData } from '../../actions'
 //components
 import PostDetailComponent from '../../components/PostDetailComponent'
 
@@ -13,19 +13,8 @@ import PostCommentContainer from '../PostCommentContainer'
 class PostDetailContainer extends Component {
 
     componentDidMount() {
-        
-        fetch(`http://localhost:3001/posts/8xf0y6ziyjabvozdd253nd`,{
-            headers: { 'Authorization': 'mi-fake-header' }
-        })
-        .then(res=>{
-            return res.json()
-        })
-        .then(res=>{
-            this.props.dispatch(postDetailAction(res))
-        })
-        .catch(err => {
-            console.log(err)
-        })
+
+        this.props.postDetailFetchData(`http://localhost:3001/posts/${this.props.props.match.params.id}/`)
     }
 
     render () {
@@ -43,4 +32,10 @@ const mapStateToProps = state => {
     return {state}
 }
 
-export default connect(mapStateToProps)(PostDetailContainer)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        postDetailFetchData: (url) => dispatch(postDetailFetchData(url)),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostDetailContainer)

@@ -35,17 +35,17 @@ class App extends Component {
           <div className="row">
             <div className="col">
 
-            <Route exact path="/" render={({ history }) => (
-                <PostListContainer /> 
-              )}/>
+              <Route exact path="/posts/detail/:id" component={this.PostDetailContainer} />
+              
+              
+              <Route exact path="/:category/posts" component={this.PostCategoryContainer} />
 
+              
               <Route exact path="/posts" render={({ history }) => (
                 <PostListContainer /> 
               )}/>
 
-              <Route exact path="/posts/detail/:id" component={this.PostDetailContainer} />
-
-              <Route exact path="/:category/posts" component={this.PostCategoryContainer} />
+              
 
             </div>
           </div>
