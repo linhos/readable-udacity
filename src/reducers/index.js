@@ -21,7 +21,8 @@ const initialState = {
     'posts': [],
     'post': [],
     'categoryPosts': [],
-    'sort': 'DESC'
+    'sort': 'DESC',
+    isLoading: true
 }
 
 function postReducer(state=initialState, action, ) {
@@ -73,13 +74,15 @@ function postReducer(state=initialState, action, ) {
         
             return {
                 ...state,
-                
+                isLoading: true
+           
             }
             
         case 'POST_DETAIL_SUCCESS':
         
             return Object.assign({}, state, {
-                'post': action.post
+                'post': action.post,
+                isLoading:false
                 
             });
         
