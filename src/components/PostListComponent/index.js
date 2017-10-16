@@ -14,13 +14,15 @@ class PostListComponent extends Component {
                     <th>#</th>
                     <th>Title</th>
                     <th>
-                        <button type="button" onClick={() => this.props.sortByAuthor('DESC')} className="btn btn-danger btn-sm">
-                            Author
-                        </button>
+                        Author
                     </th>
                     <th>Category</th>
                     <th>Comments</th>
-                    <th>Vote Score</th>
+                    <th>
+                    <button type="button" onClick={() => this.props.sortByScore('DESC')} className="btn btn-danger btn-sm">
+                            Vote Score
+                        </button>
+                    </th>
                     <th></th>
                     <th></th>
                     <th></th>

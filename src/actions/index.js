@@ -65,9 +65,9 @@ export const PostCategoryListAction = categoryPosts => {
     }
 }
 
-export const sortByAuthorAction = (sort, posts) => {
+export const sortByScoreAction = (sort, posts) => {
     return {
-        type: 'SORT_BY_AUTHOR',
+        type: 'SORT_BY_SCORE',
         posts
     }
 }

@@ -12,7 +12,7 @@ import {
     POST_LIST_PENDING,
     POST_COMMENT_PENDING,
     POST_COMMENT_SUCCESS,
-    SORT_BY_AUTHOR,
+    SORT_BY_SCORE,
     postCommentFetchData
     
 } from '../actions'
@@ -28,14 +28,13 @@ const initialState = {
 function postReducer(state=initialState, action, ) {
     switch(action.type){
 
-        case 'SORT_BY_AUTHOR':
+        case 'SORT_BY_SCORE':
             let sortState = Object.assign({}, state, {});
-            console.log(sortState.sort)
             if (sortState.sort == 'DESC' ){
                 sortState.sort = 'ASC'
-                sortState.posts.sort((a,b) => a.author < b.author)   
+                sortState.posts.sort((a,b) => a.voteScore > b.voteScore)   
             } else {
-                sortState.posts.sort((a,b) => a.author > b.author)
+                sortState.posts.sort((a,b) => a.voteScore < b.voteScore)
                 sortState.sort = 'DESC'
             }
             return sortState;

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 //Redux
 import { connect } from 'react-redux'
 //actions
-import {postCommentFetchData, itemsFetchData, postVoteDownAction, postVoteUpAction, sortByAuthorAction} from '../../actions'
+import {postCommentFetchData, itemsFetchData, postVoteDownAction, postVoteUpAction, sortByScoreAction} from '../../actions'
 //components
 import PostListComponent from '../../components/PostListComponent'
 
@@ -22,8 +22,8 @@ class PostListContainer extends Component {
         this.props.postVoteDownAction(value)
     }
 
-    onClickSortByAuthor = (value, posts) => {
-        this.props.sortByAuthorAction(value, this.props.state.posts.posts)
+    onClickSortByScore = (value, posts) => {
+        this.props.sortByScoreAction(value, this.props.state.posts.posts)
     }
 
     render () {
@@ -32,7 +32,7 @@ class PostListContainer extends Component {
                 posts = {this.props.state.posts.posts} 
                 voteUp = {this.onClickVoteUp} 
                 voteDown = {this.onclickVoteDown} 
-                sortByAuthor = {this.onClickSortByAuthor}
+                sortByScore = {this.onClickSortByScore}
                 countComments = {this.props.postCommentFetchData} />
         )
     }
@@ -48,7 +48,7 @@ const mapDispatchToProps = (dispatch) => {
         fetchData: (url) => dispatch(itemsFetchData(url)),
         postVoteUpAction: (value) => dispatch(postVoteUpAction(value)),
         postVoteDownAction: (value) => dispatch(postVoteDownAction(value)),
-        sortByAuthorAction: (value, posts) => dispatch(sortByAuthorAction(value, posts)),
+        sortByScoreAction: (value, posts) => dispatch(sortByScoreAction(value, posts)),
         postCommentFetchData: (value) => dispatch(postCommentFetchData(value)),
     };
 };
