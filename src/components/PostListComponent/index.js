@@ -19,7 +19,7 @@ class PostListComponent extends Component {
                         </button>
                     </th>
                     <th>Category</th>
-                    <th>Number of Comments</th>
+                    <th>Comments</th>
                     <th>Vote Score</th>
                     <th></th>
                     <th></th>
@@ -41,7 +41,9 @@ class PostListComponent extends Component {
                                     {post.category}
                                 </Link>
                             </td>
-                            <td>{post.commentsNumber}</td>
+                            <td>
+                                {post.commentsNumber}
+                            </td>
                             <td>{post.voteScore}</td>
                             <td><button type="button" onClick={() => this.props.voteUp(post.id)} className="btn btn-primary btn-sm">Vote Up</button></td>
                             <td><button type="button" onClick={() => this.props.voteDown(post.id)} className="btn btn-danger btn-sm">Vote Down</button></td>

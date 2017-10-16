@@ -6,9 +6,15 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import {Provider} from 'react-redux'
 
-import store from './store'
-
 import registerServiceWorker from './registerServiceWorker';
+
+import configureStore from './store/configureStore';
+
+//import store from './store'
+
+
+const store = configureStore();
+
 
 ReactDOM.render(<BrowserRouter><Provider store={store}><App /></Provider></BrowserRouter>, document.getElementById('root'));
 registerServiceWorker();

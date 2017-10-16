@@ -7,8 +7,12 @@ import {
     POST_VOTE_DOWN,
     POST_DETAIL,
     POST_CATEGORY_LIST,
-
-    SORT_BY_AUTHOR
+    POST_LIST_SUCCESS,
+    POST_LIST_PENDING,
+    POST_COMMENT_PENDING,
+    POST_COMMENT_SUCCESS,
+    SORT_BY_AUTHOR,
+    postCommentFetchData
     
 } from '../actions'
 
@@ -38,29 +42,33 @@ function postReducer(state=initialState, action, ) {
                     
                   }); 
 
-        case 'POST_LIST':
+        case 'POST_LIST_PENDING':
 
+            return {
+                ...state,
+                
+            }
+
+        case 'POST_LIST_SUCCESS':
+        
             return Object.assign({}, state, {
-                'posts': action.posts.map(post => {
-                    fetch(`http://localhost:3001/posts/${post.id}/comments`, {
-                        headers: { 'Authorization': 'mi-fake-header' }
-                    }).then(res=>{
-                        return res.json();
-                    }).then(res=>{
-                       
-                            let postComment = res.filter((c) => c.parentId === post.id)
-                            if (postComment.length > 0){
-                                post['commentsNumber'] = postComment.length;  
-                            } else {
-                                post['commentsNumber'] = 0;
-                            }
-                            
-                    })
-                   
-                    return post;
-                })
+                'posts': action.posts
+                
             });
 
+        case 'POST_COMMENT_PENDING':
+        
+            return {
+                ...state,
+                
+            }
+            
+        case 'POST_COMMENT_SUCCESS':
+            let cState = Object.assign({}, state, {});
+            let cUp = cState.posts.find(b => b.id === action.postId);
+            console.log(action.postId)
+            console.log(action.comments)
+            cUp.commentsNumber = action.comments
        
         case 'POST_DETAIL':
             return Object.assign({}, state, {
