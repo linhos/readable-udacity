@@ -44,6 +44,20 @@ export const postVoteDownAction = postId => {
     }
 }
 
+export const postDetailVoteUpAction = postId => {
+    return {
+        type: 'POST_DETAIL_VOTE_UP',
+        postId
+    }
+}
+
+export const postDetailVoteDownAction = postId => {
+    return {
+        type: 'POST_DETAIL_VOTE_DOWN',
+        postId
+    }
+}
+
 export function postDetailSuccessAction (post) {
     return {
         type: 'POST_DETAIL_SUCCESS',

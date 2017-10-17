@@ -85,12 +85,22 @@ function postReducer(state=initialState, action, ) {
             let up = upstate.posts.find(b => b.id === action.postId);
             up.voteScore = up.voteScore + 1
             return upstate;
-        
+      
         case 'POST_VOTE_DOWN':
             let downstate = Object.assign({}, state);
             let down = downstate.posts.find(b => b.id === action.postId);
             down.voteScore = down.voteScore - 1
             return downstate;
+
+        case 'POST_DETAIL_VOTE_DOWN':
+            let downstateDetail = Object.assign({}, state);
+            downstateDetail.post.voteScore = downstateDetail.post.voteScore - 1
+            return downstateDetail;
+
+        case 'POST_DETAIL_VOTE_UP':
+            let upstateDetail = Object.assign({}, state, {});
+            upstateDetail.post.voteScore = upstateDetail.post.voteScore + 1
+            return upstateDetail;
 
         case 'POST_CATEGORY_LIST':
             return Object.assign({}, state, {
