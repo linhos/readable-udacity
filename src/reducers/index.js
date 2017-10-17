@@ -12,9 +12,7 @@ import {
     POST_LIST_PENDING,
     POST_COMMENT_PENDING,
     POST_COMMENT_SUCCESS,
-    SORT_BY_SCORE,
-    postCommentFetchData
-    
+    SORT_BY_SCORE
 } from '../actions'
 
 const initialState = {
@@ -101,7 +99,7 @@ function postReducer(state=initialState, action, ) {
       
         case 'COMMENT_VOTE_DOWN':
             let commentDown = Object.assign({}, state);
-            let doc = commentDown.posts.find(b => b.id === action.commentId);
+            let doc = commentDown.comments.find(b => b.id === action.commentId);
             doc.voteScore = doc.voteScore - 1
             return commentDown;
 
