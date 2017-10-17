@@ -113,6 +113,13 @@ export function commentsPendingAction (bool) {
 }
 
 
+export const postAddAction = post => {
+    return {
+        type: 'POST_ADD',
+        post
+    }
+}
+
 export function postDetailFetchData(url) {
     return (dispatch) => {
         dispatch(postDetailPendingAction(true));
