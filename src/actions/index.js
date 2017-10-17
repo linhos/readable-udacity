@@ -28,7 +28,19 @@ export function postCommentPendingAction (bool) {
     }
 }
 
+export const commentVoteUpAction = commentId => {
+    return {
+        type: 'COMMENT_VOTE_UP',
+        commentId
+    }
+}
 
+export const commentVoteDownAction = commentId => {
+    return {
+        type: 'COMMENT_VOTE_DOWN',
+        commentId
+    }
+}
 
 export const postVoteUpAction = postId => {
     return {
@@ -86,6 +98,19 @@ export const sortByScoreAction = (sort, posts) => {
     }
 }
 
+export function commentsSuccessAction (comments) {
+    return {
+        type: 'COMMENTS_LIST_SUCCESS',
+        comments
+    }
+}
+
+export function commentsPendingAction (bool) {
+    return {
+        type: 'COMMENTS_LIST_PENDING',
+        pending: bool
+    }
+}
 
 
 export function postDetailFetchData(url) {
@@ -138,4 +163,18 @@ export function postCommentFetchData(postId) {
     };
 }
 
+export function commentsFetchData(postId) {
+    return (dispatch) => {
+        dispatch(commentsPendingAction(true));
+
+        fetch(`http://localhost:3001/posts/${postId}/comments/`, {headers: { 'Authorization': 'mi-fake-header' }})
+            .then((response) => {
+                dispatch(commentsPendingAction(false));
+
+                return response;
+            })
+            .then((response) => response.json())
+            .then((items) =>  dispatch(commentsSuccessAction(items, postId)))
+    };
+}
 

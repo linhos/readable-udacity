@@ -20,6 +20,7 @@ import {
 const initialState = {
     'posts': [],
     'post': [],
+    'comments': [],
     'categoryPosts': [],
     'sort': 'DESC',
     isLoading: true
@@ -92,6 +93,18 @@ function postReducer(state=initialState, action, ) {
             down.voteScore = down.voteScore - 1
             return downstate;
 
+        case 'COMMENT_VOTE_UP':
+            let comment = Object.assign({}, state, {});
+            let co = comment.comments.find(b => b.id === action.commentId);
+            co.voteScore = co.voteScore + 1
+            return comment;
+      
+        case 'COMMENT_VOTE_DOWN':
+            let commentDown = Object.assign({}, state);
+            let doc = commentDown.posts.find(b => b.id === action.commentId);
+            doc.voteScore = doc.voteScore - 1
+            return commentDown;
+
         case 'POST_DETAIL_VOTE_DOWN':
             let downstateDetail = Object.assign({}, state);
             downstateDetail.post.voteScore = downstateDetail.post.voteScore - 1
@@ -105,7 +118,22 @@ function postReducer(state=initialState, action, ) {
         case 'POST_CATEGORY_LIST':
             return Object.assign({}, state, {
                 'categoryPosts': action.categoryPosts
-            })    
+            })  
+            
+        case 'COMMENTS_LIST_PENDING':
+        
+            return {
+                ...state,
+                isLoading: true
+            
+            }
+            
+        case 'COMMENTS_LIST_SUCCESS':
+        
+            return Object.assign({}, state, {
+                'comments': action.comments,
+                'isLoading': false
+            }) 
         
         default: {
             return state;

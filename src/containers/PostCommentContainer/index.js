@@ -5,23 +5,31 @@ import {connect} from 'react-redux'
 import PostCommentComponent from '../../components/PostCommentComponent'
 
 //actions
-import {postCommentFetchData} from '../../actions'
+import {commentsFetchData, commentVoteDownAction, commentVoteUpAction} from '../../actions'
 
 
 class PostCommentContainer extends Component {
 
     componentDidMount()
     {
-        this.props.postCommentFetchData(this.props.postId)
+        this.props.commentsFetchData(this.props.postId)
     }
 
-    fetchPostComments() {
+    onclickVoteDown = value => {
+        this.props.commentVoteDownAction(value)
+    }
 
+    onclickVoteUp = value => {
+        this.props.commentVoteUpAction(value)
     }
 
     render () {
         return (
-            <PostCommentComponent />
+            <PostCommentComponent 
+                comments={this.props.state.posts.comments } 
+                voteUp = {this.onClickVoteUp} 
+                voteDown = {this.onclickVoteDown}
+            />
         )
     }
 
@@ -33,7 +41,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        postCommentFetchData: (url) => dispatch(postCommentFetchData(url)),
+        commentsFetchData: (value) => dispatch(commentsFetchData(value)),
+        commentVoteDownAction: (value) => dispatch(commentVoteDownAction(value)),
+        commentVoteUpAction: (value) => dispatch(commentVoteUpAction(value))
     };
 };
 
