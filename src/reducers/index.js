@@ -75,10 +75,10 @@ function postReducer(state=initialState, action, ) {
             
         case 'POST_DETAIL_SUCCESS':
         
-        return Object.assign({}, state, {
-            'post': action.post,
-            'isLoading': false
-        }) 
+            return Object.assign({}, state, {
+                'post': action.post,
+                'isLoading': false
+            }) 
         
         case 'POST_VOTE_UP':
             let upstate = Object.assign({}, state, {});

@@ -18,10 +18,6 @@ class PostDetailContainer extends Component {
     }
 
     render () {
-        console.log(this.props)
-        if (this.props.state.posts.isLoading) {
-            return <p>Loading…</p>;
-        }
 
         return (
             <span>

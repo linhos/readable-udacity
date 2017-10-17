@@ -16,8 +16,8 @@ export function postListPendingAction (bool) {
 export const postCommentSuccessAction = (comments, postId) => {
     return {
         type: 'POST_COMMENT_SUCCESS',
-        'comments': comments.length,
-        'postId': postId
+        comments,
+        postId
     }
 }
 
@@ -120,7 +120,8 @@ export function postCommentFetchData(postId) {
                 return response;
             })
             .then((response) => response.json())
-            .then((items) =>  dispatch(postCommentSuccessAction(items, postId)))
+            .then((items) =>  dispatch(postCommentSuccessAction(items.length, postId)))
     };
 }
+
 

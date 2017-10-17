@@ -33,7 +33,7 @@ class PostListContainer extends Component {
     onclickVoteDown = value => {
         
         fetch(`http://localhost:3001/posts/${value}`, {
-            headers: { 'Authorization': 'mi-fake-header' }, 
+            headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
             method: 'POST',
             body: JSON.stringify({
                 option: 'downVote'
