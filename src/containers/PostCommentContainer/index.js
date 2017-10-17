@@ -4,11 +4,15 @@ import {connect} from 'react-redux'
 
 import PostCommentComponent from '../../components/PostCommentComponent'
 
+//actions
+import {postCommentFetchData} from '../../actions'
+
+
 class PostCommentContainer extends Component {
 
     componentDidMount()
     {
-        
+        this.props.postCommentFetchData(this.props.postId)
     }
 
     fetchPostComments() {
@@ -27,4 +31,11 @@ const mapStateToProps = state => {
     return {state}
 }
 
-export default connect(mapStateToProps)(PostCommentContainer)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        postCommentFetchData: (url) => dispatch(postCommentFetchData(url)),
+    };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostCommentContainer)

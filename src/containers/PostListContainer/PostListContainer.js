@@ -15,10 +15,35 @@ class PostListContainer extends Component {
     }
 
     onClickVoteUp = value => {
+        fetch(`http://localhost:3001/posts/${value}`, {
+            headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
+            method: 'POST',
+            body: JSON.stringify({
+                option: 'upVote'
+              })
+          })
+          .then(response => response.json())
+          .then( (response ) => {
+            console.log("Vote updated successfully");
+        });
+
         this.props.postVoteUpAction(value)
     }
 
     onclickVoteDown = value => {
+        
+        fetch(`http://localhost:3001/posts/${value}`, {
+            headers: { 'Authorization': 'mi-fake-header' }, 
+            method: 'POST',
+            body: JSON.stringify({
+                option: 'downVote'
+              })
+          })
+          .then(response => response.json())
+          .then( (response ) => {
+            console.log("Vote updated successfully");
+        });
+
         this.props.postVoteDownAction(value)
     }
 

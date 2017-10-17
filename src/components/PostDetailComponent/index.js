@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 class PostDetailComponent extends Component {
     render () {
-        console.log(this.props.post)
         return (
             <span>
                 <div className="row">
