@@ -1,7 +1,6 @@
-
 import React, {Component} from 'react'
-
 import {connect} from 'react-redux'
+
 
 import PostAddComponent from '../../components/PostAddComponent'
 
@@ -12,26 +11,9 @@ import {postAddAction} from '../../actions'
 
 class PostAddContainer extends Component {
 
-    onSubmit = value => {
-        // Realizamos la petición a la API
-        var self = this;
-        console.log(self)
-        fetch(`http://localhost:3001/posts`,{
-            headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
-            method: 'POST',
-            body: JSON.stringify({
-                id: self.refs.title
-            })
-        })
-        .then(response => response.json())
-        .then( (response ) => {
-          console.log("Comment updated successfully");
-      });
-    }
-
     render (){
         return (
-            <PostAddComponent onSubmit={this.onSubmit}/>
+            <PostAddComponent />
         )
     }
 }
