@@ -117,7 +117,7 @@ function postReducer(state=initialState, action, ) {
             return Object.assign({}, state, {
                 'categoryPosts': action.categoryPosts
             })  
-            
+
         case 'COMMENTS_LIST_PENDING':
         
             return {
