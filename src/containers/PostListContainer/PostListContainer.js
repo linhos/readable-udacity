@@ -30,7 +30,7 @@ class PostListContainer extends Component {
         this.props.postVoteUpAction(value)
     }
 
-    onclickVoteDown = value => {
+    onClickVoteDown = value => {
         
         fetch(`http://localhost:3001/posts/${value}`, {
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
@@ -47,6 +47,20 @@ class PostListContainer extends Component {
         this.props.postVoteDownAction(value)
     }
 
+    onClickDelete = value => {
+        fetch(`http://localhost:3001/posts/${value}`, {
+            headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
+            method: 'POST',
+            body: JSON.stringify({
+                deleted: 'true'
+              })
+          })
+          .then(response => response.json())
+          .then( (response ) => {
+            console.log("Vote updated successfully");
+        });
+    }
+
     onClickSortByScore = (value, posts) => {
         this.props.sortByScoreAction(value, this.props.state.posts.posts)
     }
@@ -56,7 +70,8 @@ class PostListContainer extends Component {
             <PostListComponent 
                 posts = {this.props.state.posts.posts} 
                 voteUp = {this.onClickVoteUp} 
-                voteDown = {this.onclickVoteDown} 
+                voteDown = {this.onClickVoteDown}
+                delete = {this.onClickDelete}
                 sortByScore = {this.onClickSortByScore}
                 countComments = {this.props.postCommentFetchData} />
         )
