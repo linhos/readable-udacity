@@ -57,20 +57,22 @@ class PostAddComponent extends Component {
         )
       }else {
         return (
-          <hr />
-          <div className="row">
-            <form onSubmit={ this.onSubmit } >
-              <div className="form-group">  
-                <label htmlFor="title">Title</label>
-                <input type="text" className="form-control" name="title" id="title" />
-              </div>
-              <div className="form-group"> 
-                <label htmlFor="title">Body</label>
-                <input type="text" className="form-control" name="body" id="body" />
-              </div>
-              <p className="align-center"><input className="btn-primary" type="submit" value="Add"/></p>
-            </form>
-          </div>
+          <span>
+            <hr />
+            <div className="row">
+              <form onSubmit={ this.onSubmit } >
+                <div className="form-group">  
+                  <label htmlFor="title">Title</label>
+                  <input type="text" className="form-control" name="title" id="title" />
+                </div>
+                <div className="form-group"> 
+                  <label htmlFor="title">Body</label>
+                  <input type="text" className="form-control" name="body" id="body" />
+                </div>
+                <p className="align-center"><input className="btn-primary" type="submit" value="Add"/></p>
+              </form>
+            </div>
+          </span>
         )
       }
       
