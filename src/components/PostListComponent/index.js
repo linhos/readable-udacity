@@ -17,6 +17,7 @@ class PostListComponent extends Component {
               <th>
                   Author
               </th>
+              <th>Body</th>
               <th>Category</th>
               <th>Comments</th>
               <th>
@@ -37,6 +38,7 @@ class PostListComponent extends Component {
                 }>
                 <td>{post.id}</td>
                 <td>{post.title}</td>
+                <td>{post.body}</td>
                 <td>
         
                         {post.author}

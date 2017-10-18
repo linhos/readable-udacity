@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 //React-Router-Dom
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 
-
 //Containers
 import PostListContainer from './containers/PostListContainer'
 import PostDetailContainer from './containers/PostDetailContainer'
@@ -33,7 +32,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           
-          <h1 className="App-title"></h1>
+          <h1 className="App-title"><Link className="btn btn-danger btn-sm" to={`/posts/add/`} >Add Post</Link></h1>
         </header>
         <div className="container">
           <div className="row">
