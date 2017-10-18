@@ -33,7 +33,7 @@ class PostListComponent extends Component {
             {this.props.posts && this.props.posts.map((post) => (
                 <tr key={ post.timestamp
                     ? post.timestamp.toString()
-                    : 'null'
+                    : post.id+post.author
                 }>
                 <td>{post.id}</td>
                 <td>{post.title}</td>
