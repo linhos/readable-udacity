@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
 import PostCommentComponent from '../../components/PostCommentComponent'
+import CommentAddComponent from '../../components/CommentAddComponent'
 
 //actions
 import {commentsFetchData, commentVoteDownAction, commentVoteUpAction} from '../../actions'
@@ -49,11 +50,15 @@ class PostCommentContainer extends Component {
 
     render () {
         return (
-            <PostCommentComponent 
-                comments={this.props.state.posts.comments } 
-                voteUp = {this.onClickVoteUp} 
-                voteDown = {this.onClickVoteDown}
-            />
+            <span>
+                <PostCommentComponent 
+                    comments={this.props.state.posts.comments } 
+                    voteUp = {this.onClickVoteUp} 
+                    voteDown = {this.onClickVoteDown}
+                />
+                <hr />
+                <CommentAddComponent postId = {this.props.postId} />
+            </span>
         )
     }
 
