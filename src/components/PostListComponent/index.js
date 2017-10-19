@@ -14,16 +14,14 @@ class PostListComponent extends Component {
               <tr>
               <th>#</th>
               <th>Title</th>
-              <th>
-                  Author
-              </th>
               <th>Body</th>
+              <th>Author</th>
               <th>Category</th>
               <th>Comments</th>
               <th>
-              <button type="button" onClick={() => this.props.sortByScore('DESC')} className="btn btn-danger btn-sm">
-                      Vote Score
-                  </button>
+                <button type="button" onClick={() => this.props.sortByScore('DESC')} className="btn btn-danger btn-sm">
+                    Vote Score
+                </button>
               </th>
               <th></th>
               <th></th>
@@ -37,7 +35,7 @@ class PostListComponent extends Component {
                     : post.id+post.author
                 }>
                 <td>{post.id}</td>
-                <td>{post.title}</td>
+                <td><Link className="btn btn-link btn-sm" to={`/posts/detail/${post.id}/`} >{post.title} <i className="fa fa-info-circle" aria-hidden="true"></i></Link></td>
                 <td>{post.body}</td>
                 <td>
         
@@ -56,6 +54,7 @@ class PostListComponent extends Component {
                 <td><button type="button" onClick={() => this.props.voteDown(post.id)} className="btn btn-danger btn-sm">Vote Down</button></td>
                 <td><Link className="btn btn-danger btn-sm" to={`/posts/${post.id}/`} >Delete</Link></td>
                 <td><Link className="btn btn-link btn-sm" to={`/posts/detail/${post.id}/`} >Detail</Link></td>
+              
             </tr>
                    
             ))}

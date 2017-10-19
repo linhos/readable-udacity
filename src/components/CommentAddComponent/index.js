@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 class CommentAddComponent extends Component {
 
-        // Iniciamos el estado
+    // Iniciamos el estado
     constructor(props) {
         super(props);
 
@@ -49,6 +49,7 @@ class CommentAddComponent extends Component {
             return (
               <span>
                 <div className="alert alert-success" role="alert">{this.state.message}</div>
+                <p><Link className="btn btn-link btn-sm" to={`/posts`} >Return</Link></p>
               </span>
             )
         }

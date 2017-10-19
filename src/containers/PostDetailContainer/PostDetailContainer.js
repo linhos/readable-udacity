@@ -33,7 +33,6 @@ class PostDetailContainer extends Component {
         this.props.postDetailVoteUpAction(value)
     }
 
-
     onclickVoteDown = value => {
         
         fetch(`http://localhost:3001/posts/${value}`, {

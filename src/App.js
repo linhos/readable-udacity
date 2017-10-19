@@ -9,8 +9,8 @@ import PostDetailContainer from './containers/PostDetailContainer'
 import PostCategoryContainer from './containers/PostCategoryContainer'
 import PostCommentContainer from './containers/PostCommentContainer'
 import PostAddContainer from './containers/PostAddContainer'
+import PostEditContainer from './containers/PostEditContainer'
 
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -27,6 +27,10 @@ class App extends Component {
     return (<PostDetailContainer props={props} />)
   }
 
+  PostEditContainer = (props) => {
+    return (<PostEditContainer props={props} />)
+  }
+
   render() {
     return (
       <div className="App">
@@ -40,12 +44,11 @@ class App extends Component {
 
               <Route exact path="/posts/add" component={this.PostAddContainer} />
 
-
               <Route exact path="/posts/detail/:id" component={this.PostDetailContainer} />
               
+              <Route exact path="/posts/edit/:id" component={this.PostEditContainer} />
               
               <Route exact path="/:category/posts" component={this.PostCategoryContainer} />
-
               
               <Route exact path="/posts" render={({ history }) => (
                 <PostListContainer /> 

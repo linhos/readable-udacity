@@ -20,7 +20,8 @@ class PostDetailComponent extends Component {
                     <thead>
                         <tr>
                         <th>#</th>
-                        <th>Title Detail</th>
+                        <th>Title</th>
+                        <th>Body</th>
                         <th>Author</th>
                         <th>Vote Score</th>
                         <th></th>
@@ -32,11 +33,17 @@ class PostDetailComponent extends Component {
 
                         <tr>
                             <td>{this.props.post.id}</td>
-                            <td>{this.props.post.title}</td>
+                            <td>
+                                <Link className="btn btn-link btn-sm" to={`/posts/edit/${this.props.post.id}/`} >
+                                {this.props.post.title} <i className="fa fa-pencil" aria-hidden="true"></i>
+                                </Link>
+                            </td>
+                            <td>{this.props.post.body}</td>
                             <td>{this.props.post.author}</td>
                             <td>{this.props.post.voteScore}</td>
                             <td><button type="button" onClick={() => this.props.voteUp(this.props.post.id)} className="btn btn-primary btn-sm">Vote Up</button></td>
                             <td><button type="button" onClick={() => this.props.voteDown(this.props.post.id)} className="btn btn-danger btn-sm">Vote Down</button></td>
+                            <td><Link className="btn btn-link btn-sm" to={`/posts/edit/${this.props.post.id}/`} >Edit</Link></td>
                         </tr>
                         
                     </tbody>

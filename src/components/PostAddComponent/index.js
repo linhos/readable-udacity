@@ -67,7 +67,11 @@ class PostAddComponent extends Component {
                 </div>
                 <div className="form-group"> 
                   <label htmlFor="title">Body</label>
-                  <input type="text" className="form-control" name="body" id="body" />
+                  <textarea 
+                    rows="3" 
+                    name="body" 
+                    id="body" className="form-control">
+                  </textarea>
                 </div>
                 <p className="align-center"><input className="btn-primary" type="submit" value="Add"/></p>
               </form>
