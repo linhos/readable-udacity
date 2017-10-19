@@ -21,9 +21,7 @@ class CommentEditComponent extends Component {
         e.preventDefault();
         const values = serializeForm(e.target, {hash: true})
 
-        let timestamp = new Date().getTime()
-
-        console.log(values)
+        let stamp = new Date().getTime()
 
         fetch(`http://localhost:3001/comments/${this.props.comment.id}`, {
             method: "PUT",
@@ -31,11 +29,12 @@ class CommentEditComponent extends Component {
         
             body: JSON.stringify({
                 body: values.body,
-                timestamp: timestamp
+                timestamp: stamp
             })
         })
         .then(response => response.json())
         .then( (response ) => {
+            console.log(response)
             this.setState(state => ({
                 message: 'Comment edit succesfully',
             }))
