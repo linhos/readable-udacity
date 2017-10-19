@@ -62,7 +62,7 @@ class CommentAddComponent extends Component {
                 <div className="row">
                     <div className="card card-default">
                         <div className="card-body">
-                        <h6 class="card-title">Add Comment</h6>
+                        <h6 className="card-title">Add Comment</h6>
                             <form onSubmit={ this.onSubmit } >
                                 <div className="form-group"> 
                                 <label htmlFor="title">Body</label>

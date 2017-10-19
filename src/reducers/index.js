@@ -12,13 +12,16 @@ import {
     POST_LIST_PENDING,
     POST_COMMENT_PENDING,
     POST_COMMENT_SUCCESS,
-    SORT_BY_SCORE
+    SORT_BY_SCORE,
+    COMMENT_EDIT_SUCCESS,
+    COMMENT_EDIT_PENDING
 } from '../actions'
 
 const initialState = {
     'posts': [],
     'post': [],
     'comments': [],
+    'comment': [],
     'categoryPosts': [],
     'sort': 'DESC',
     isLoading: true
@@ -130,6 +133,20 @@ function postReducer(state=initialState, action, ) {
         
             return Object.assign({}, state, {
                 'comments': action.comments,
+                'isLoading': false
+            })
+
+        case 'COMMENT_EDIT_PENDING':
+            return {
+                ...state,
+                isLoading: true
+            
+            }
+            
+        case 'COMMENT_EDIT_SUCCESS':
+            console.log(action.comment)
+            return Object.assign({}, state, {
+                'comment': action.comment,
                 'isLoading': false
             }) 
         

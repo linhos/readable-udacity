@@ -29,13 +29,13 @@ class PostCommentComponent extends Component {
                     
                     {this.props.comments && this.props.comments.map((post) => (
                         <tr key={post.timestamp.toString()}>
-                            <td></td>
+                            <td>{post.id}</td>
                             <td>{post.author}</td>
                             <td>{post.body}</td>
                             <td>{post.voteScore}</td>
                             <td><button type="button" onClick={() => this.props.voteUp(post.id)} className="btn btn-primary btn-sm">Vote Up</button></td>
                             <td><button type="button" onClick={() => this.props.voteDown(post.id)} className="btn btn-danger btn-sm">Vote Down</button></td>
-                            <td><Link className="btn btn-link btn-sm" to={`/posts/detail/${post.id}/`} >Detail</Link></td>
+                            <td><Link className="btn btn-link btn-sm" to={`/comments/edit/${post.id}/`} >Edit Comment</Link></td>
                         </tr>
                     ))}
                     

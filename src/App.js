@@ -10,6 +10,8 @@ import PostCategoryContainer from './containers/PostCategoryContainer'
 import PostCommentContainer from './containers/PostCommentContainer'
 import PostAddContainer from './containers/PostAddContainer'
 import PostEditContainer from './containers/PostEditContainer'
+import CommentEditContainer from './containers/CommentEditContainer'
+
 
 import './App.css';
 
@@ -31,6 +33,10 @@ class App extends Component {
     return (<PostEditContainer props={props} />)
   }
 
+  CommentEditContainer = (props) => {
+    return (<CommentEditContainer props={props} />)
+  }
+
   render() {
     return (
       <div className="App">
@@ -47,7 +53,9 @@ class App extends Component {
               <Route exact path="/posts/detail/:id" component={this.PostDetailContainer} />
               
               <Route exact path="/posts/edit/:id" component={this.PostEditContainer} />
-              
+
+              <Route exact path="/comments/edit/:id" component={this.CommentEditContainer} />
+
               <Route exact path="/:category/posts" component={this.PostCategoryContainer} />
               
               <Route exact path="/posts" render={({ history }) => (

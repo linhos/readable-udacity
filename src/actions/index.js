@@ -84,6 +84,20 @@ export function postDetailPendingAction (bool) {
     }
 }
 
+export function commentEditSuccessAction (comment) {
+    return {
+        type: 'COMMENT_EDIT_SUCCESS',
+        comment
+    }
+}
+
+export function commentEditPendingAction (bool) {
+    return {
+        type: 'COMMENT_EDIT_PENDING',
+        pending: bool
+    }
+}
+
 export const PostCategoryListAction = categoryPosts => {
     return {
         type: 'POST_CATEGORY_LIST',
@@ -132,6 +146,22 @@ export function postDetailFetchData(url) {
             })
             .then((response) => response.json())
             .then((item) => dispatch(postDetailSuccessAction(item)))
+    };
+}
+
+export function commentEditFetchData(commentId) {
+    console.log(commentId)
+    return (dispatch) => {
+        dispatch(commentEditPendingAction(true));
+
+        fetch(`http://localhost:3001/comments/${commentId}/`, {headers: { 'Authorization': 'mi-fake-header' }})
+            .then((response) => {
+                dispatch(commentEditPendingAction(false));
+
+                return response;
+            })
+            .then((response) => response.json())
+            .then((item) =>  dispatch(commentEditSuccessAction(item)))
     };
 }
 
