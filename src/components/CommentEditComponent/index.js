@@ -21,24 +21,8 @@ class CommentEditComponent extends Component {
         e.preventDefault();
         const values = serializeForm(e.target, {hash: true})
 
-        let stamp = new Date().getTime()
-
-        fetch(`http://localhost:3001/comments/${this.props.comment.id}`, {
-            method: "PUT",
-            headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
-        
-            body: JSON.stringify({
-                body: values.body,
-                timestamp: stamp
-            })
-        })
-        .then(response => response.json())
-        .then( (response ) => {
-            console.log(response)
-            this.setState(state => ({
-                message: 'Comment edit succesfully',
-            }))
-    })};
+        this.props.editCommentPut(this.props.comment.id, values.body)
+    }
 
     handleBodyChange = (e) => {
         this.setState({
@@ -76,16 +60,16 @@ class CommentEditComponent extends Component {
                 <div className="row">
                 <form onSubmit={ this.onSubmit } >
                     
-                    <div className="form-group"> 
+                <div className="form-group"> 
                     <label htmlFor="title">Body</label>
-                    <input 
-                        type="text" 
-                        id="body"
-                        name="body" 
-                        defaultValue={this.props.comment.body} 
-                        onChange={this.handleBodyChange} />
-                    
-                    </div>
+                    <textarea 
+                    rows="3" 
+                    name="body" 
+                    id="body" 
+                    defaultValue={this.props.comment.body} 
+                    onChange={this.handleBodyChange}>
+                    </textarea>
+                </div>
 
                     <p className="align-center"><input className="btn-primary" type="submit" value="Edit Comment"/></p>
                 </form>

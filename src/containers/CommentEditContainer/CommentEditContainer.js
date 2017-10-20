@@ -5,7 +5,7 @@ import CommentEditComponent from '../../components/CommentEditComponent'
 //redux
 import {connect} from 'react-redux'
 //actions
-import {commentEditFetchData} from '../../actions'
+import {commentEditFetchData, editCommentPut} from '../../actions'
 
 
 class CommentEditContainer extends Component {
@@ -17,7 +17,7 @@ class CommentEditContainer extends Component {
     render() {
         
         return (
-            <CommentEditComponent isLoading = {this.props.state.posts.isLoading} comment = {this.props.state.posts.comment } />
+            <CommentEditComponent editCommentPut = {this.props.editCommentPut} isLoading = {this.props.state.posts.isLoading} comment = {this.props.state.posts.comment } />
         )
     }
 
@@ -31,6 +31,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
     return {
         commentEditFetchData: (value) => dispatch(commentEditFetchData(value)),
+        editCommentPut: (commentId, body) => dispatch(editCommentPut(commentId, body))
     };
 };
 

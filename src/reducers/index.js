@@ -148,8 +148,21 @@ function postReducer(state=initialState, action, ) {
             return Object.assign({}, state, {
                 'comment': action.comment,
                 'isLoading': false
-            }) 
+            })
+                
+        case 'EDIT_PENDING':
+            return {
+                ...state,
+                isLoading: true
+            }
         
+        case 'EDIT_SUCCESS':
+            console.log(action.comment)
+            return Object.assign({}, state, {
+                'comment': action.comment,
+                'isLoading': false
+            })
+
         default: {
             return state;
         }

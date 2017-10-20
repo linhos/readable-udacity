@@ -134,6 +134,21 @@ export const postAddAction = post => {
     }
 }
 
+export const editPendingAction = commentId => {
+    return {
+        type: 'EDIT_PENDING',
+        commentId
+    }
+}
+
+export const editSuccessAction = comment => {
+    
+    return {
+        type: 'EDIT_SUCCESS',
+        comment
+    }
+}
+
 export function postDetailFetchData(url) {
     return (dispatch) => {
         dispatch(postDetailPendingAction(true));
@@ -150,7 +165,6 @@ export function postDetailFetchData(url) {
 }
 
 export function commentEditFetchData(commentId) {
-    console.log(commentId)
     return (dispatch) => {
         dispatch(commentEditPendingAction(true));
 
@@ -215,3 +229,28 @@ export function commentsFetchData(postId) {
     };
 }
 
+
+export function editCommentPut(commentId, value) {
+    return (dispatch) => {
+        dispatch(editPendingAction(true));
+
+        fetch(`http://localhost:3001/comments/${commentId}/`, 
+            {
+                method: "PUT", 
+                headers: { 
+                 'Authorization': 'mi-fake-header',
+                 'Content-Type': 'application/json' }, 
+                 body: JSON.stringify({ timestamp: '1111111111',  body: value })
+            })
+            .then((response) => {
+                dispatch(editPendingAction(false));
+                return response;
+            })
+            .then((response) => response.json())
+            .then(
+                comment =>  {
+                    dispatch(editSuccessAction(comment))
+                }
+            )
+    };
+}
