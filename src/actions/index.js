@@ -149,6 +149,22 @@ export const editSuccessAction = comment => {
     }
 }
 
+export const deletePostSuccessAction = posts => {
+    
+    return {
+        type: 'DELETE_POST_SUCCESS',
+        posts
+    }
+}
+
+export function deletePostPendingAction (bool) {
+    return {
+        type: 'DELETE_POST_PENDING',
+        pending: bool
+    }
+}
+
+
 export function postDetailFetchData(url) {
     return (dispatch) => {
         dispatch(postDetailPendingAction(true));
@@ -161,6 +177,25 @@ export function postDetailFetchData(url) {
             })
             .then((response) => response.json())
             .then((item) => dispatch(postDetailSuccessAction(item)))
+    };
+}
+
+
+export function deletePost(postId) {
+    return (dispatch) => {
+        dispatch(deletePostPendingAction(true));
+
+        fetch(`http://localhost:3001/posts/${postId}/`, {headers: { 'Authorization': 'mi-fake-header' }})
+            .then((response) => {
+                dispatch(deletePostPendingAction(false));
+                return response;
+            })
+            .then((response) => response.json())
+            .then((items) =>  {
+                console.log(items)
+                dispatch(deletePostSuccessAction(item))
+
+            })
     };
 }
 

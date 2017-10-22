@@ -62,7 +62,9 @@ class App extends Component {
                 <PostListContainer /> 
               )}/>
 
-              
+              <Route exact path="/" render={({ history }) => (
+                <PostListContainer /> 
+              )}/>
 
             </div>
           </div>

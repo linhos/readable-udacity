@@ -14,7 +14,9 @@ import {
     POST_COMMENT_SUCCESS,
     SORT_BY_SCORE,
     COMMENT_EDIT_SUCCESS,
-    COMMENT_EDIT_PENDING
+    COMMENT_EDIT_PENDING,
+    DELETE_POST_PENDING,
+    DELETE_POST_SUCCESS
 } from '../actions'
 
 const initialState = {
@@ -47,6 +49,22 @@ function postReducer(state=initialState, action, ) {
                 ...state,
                 
             }
+
+        case 'POST_DELETE_PENDING':
+        
+            return {
+                ...state,
+                isLoading: true
+        
+            }  
+        
+        case 'POST_DELETE_PENDING':
+        
+            return Object.assign({}, state, {
+                'posts': action.posts
+                
+            });
+            
 
         case 'POST_LIST_SUCCESS':
         
