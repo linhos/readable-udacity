@@ -32,6 +32,17 @@ class PostCommentContainer extends Component {
         this.props.commentVoteDownAction(value)
     }
 
+    onClickDelete = value => {
+        fetch(`http://localhost:3001/comments/${value}`, {
+            headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
+            method: 'DELETE',
+          })
+          .then(response => response.json())
+          .then( (response ) => {
+            console.log("Delete successfully");
+        });
+    }
+
     onClickVoteUp = value => {
         fetch(`http://localhost:3001/comments/${value}`, {
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
@@ -55,6 +66,7 @@ class PostCommentContainer extends Component {
                     comments={this.props.state.posts.comments } 
                     voteUp = {this.onClickVoteUp} 
                     voteDown = {this.onClickVoteDown}
+                    delete = {this.onClickDelete}
                 />
                 <hr />
                 <CommentAddComponent postId = {this.props.postId} />

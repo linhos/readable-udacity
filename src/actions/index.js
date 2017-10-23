@@ -185,7 +185,7 @@ export function deletePost(postId) {
     return (dispatch) => {
         dispatch(deletePostPendingAction(true));
 
-        fetch(`http://localhost:3001/posts/${postId}/`, {headers: { 'Authorization': 'mi-fake-header' }})
+        fetch(`http://localhost:3001/posts/${postId}/`, {headers: {  method: "DELETE", 'Authorization': 'mi-fake-header' }})
             .then((response) => {
                 dispatch(deletePostPendingAction(false));
                 return response;
@@ -193,7 +193,7 @@ export function deletePost(postId) {
             .then((response) => response.json())
             .then((items) =>  {
                 console.log(items)
-                dispatch(deletePostSuccessAction(item))
+                dispatch(deletePostSuccessAction(items))
 
             })
     };
@@ -267,7 +267,10 @@ export function commentsFetchData(postId) {
 
 export function editCommentPut(commentId, value) {
     return (dispatch) => {
+
         dispatch(editPendingAction(true));
+
+        let timestamp = new Date().toDateString()
 
         fetch(`http://localhost:3001/comments/${commentId}/`, 
             {
@@ -275,7 +278,7 @@ export function editCommentPut(commentId, value) {
                 headers: { 
                  'Authorization': 'mi-fake-header',
                  'Content-Type': 'application/json' }, 
-                 body: JSON.stringify({ timestamp: '1111111111',  body: value })
+                 body: JSON.stringify({ timestamp: timestamp,  body: value })
             })
             .then((response) => {
                 dispatch(editPendingAction(false));

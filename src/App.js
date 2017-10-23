@@ -65,7 +65,7 @@ class App extends Component {
               <Route exact path="/" render={({ history }) => (
                 <PostListContainer /> 
               )}/>
-
+        
             </div>
           </div>
         </div>

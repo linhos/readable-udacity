@@ -7,10 +7,15 @@ import {postCommentFetchData, itemsFetchData, postVoteDownAction, postVoteUpActi
 //components
 import PostListComponent from '../../components/PostListComponent'
 
+import { Redirect } from 'react-router'
+
+
+import history from '../../history' 
 
 class PostListContainer extends Component {
 
     componentDidMount() {
+        console.log(this.props)
         this.props.fetchData('http://localhost:3001/posts')
     }
 
@@ -48,17 +53,17 @@ class PostListContainer extends Component {
     }
 
     onClickDelete = value => {
+        console.log(this.props.history)
         fetch(`http://localhost:3001/posts/${value}`, {
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
-            method: 'POST',
-            body: JSON.stringify({
-                deleted: 'true'
-              })
+            method: 'DELETE',
           })
           .then(response => response.json())
           .then( (response ) => {
-            console.log("Vote updated successfully");
+            console.log("Post Delete successfully");
         });
+
+        history.push('/posts/')
     }
 
     onClickSortByScore = (value, posts) => {

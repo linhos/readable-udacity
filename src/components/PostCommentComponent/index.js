@@ -12,14 +12,10 @@ class PostCommentComponent extends Component {
             <table className="table">
                 <thead>
                     <tr>
-                        <th>#</th>
                         <th>Author</th>
-                        <th>
-                            Body
-                        </th>
-                        <th>
-                            Vote Score
-                        </th>
+                        <th>Body</th>
+                        <th>Vote Score</th>
+                        <th></th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -29,13 +25,13 @@ class PostCommentComponent extends Component {
                     
                     {this.props.comments && this.props.comments.map((post) => (
                         <tr key={post.timestamp.toString()}>
-                            <td>{post.id}</td>
                             <td>{post.author}</td>
                             <td>{post.body}</td>
                             <td>{post.voteScore}</td>
                             <td><button type="button" onClick={() => this.props.voteUp(post.id)} className="btn btn-primary btn-sm">Vote Up</button></td>
-                            <td><button type="button" onClick={() => this.props.voteDown(post.id)} className="btn btn-danger btn-sm">Vote Down</button></td>
+                            <td><button type="button" onClick={() => this.props.voteDown(post.id)} className="btn btn-warning btn-sm">Vote Down</button></td>
                             <td><Link className="btn btn-link btn-sm" to={`/comments/edit/${post.id}/`} >Edit Comment</Link></td>
+                            <td><button type="button" onClick={() => this.props.delete(post.id)} className="btn btn-danger btn-sm">Delete</button></td>
                         </tr>
                     ))}
                     
