@@ -43,7 +43,9 @@ class PostDetailComponent extends Component {
                             <td>{this.props.post.voteScore}</td>
                             <td><button type="button" onClick={() => this.props.voteUp(this.props.post.id)} className="btn btn-primary btn-sm">Vote Up</button></td>
                             <td><button type="button" onClick={() => this.props.voteDown(this.props.post.id)} className="btn btn-danger btn-sm">Vote Down</button></td>
+                            <td><button type="button" onClick={() => this.props.delete(this.props.post.id)} className="btn btn-warning btn-sm">Delete</button></td>
                             <td><Link className="btn btn-link btn-sm" to={`/posts/edit/${this.props.post.id}/`} >Edit</Link></td>
+                            
                         </tr>
                         
                     </tbody>

@@ -9,6 +9,8 @@ import PostDetailComponent from '../../components/PostDetailComponent'
 
 import PostCommentContainer from '../PostCommentContainer'
 
+import history from '../../history' 
+
 
 class PostDetailContainer extends Component {
 
@@ -50,6 +52,20 @@ class PostDetailContainer extends Component {
         this.props.postDetailVoteDownAction(value)
     }
 
+    onClickDelete = value => {
+        console.log(this.props.history)
+        fetch(`http://localhost:3001/posts/${value}`, {
+            headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
+            method: 'DELETE',
+          })
+          .then(response => response.json())
+          .then( (response ) => {
+            console.log("Post Delete successfully");
+        });
+
+        history.push('/posts/')
+    }
+
     render () {
 
         return (
@@ -57,7 +73,8 @@ class PostDetailContainer extends Component {
                 <PostDetailComponent 
                     post = {this.props.state.posts.post} 
                     voteUp = {this.onClickVoteUp} 
-                    voteDown = {this.onclickVoteDown}/>
+                    voteDown = {this.onclickVoteDown}
+                    delete = {this.onClickDelete} />
                 <hr />
                 <PostCommentContainer postId = {this.props.props.match.params.id} />
             </span>
