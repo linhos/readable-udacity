@@ -15,7 +15,6 @@ import history from '../../history'
 class PostListContainer extends Component {
 
     componentDidMount() {
-        console.log(this.props)
         this.props.fetchData('http://localhost:3001/posts')
     }
 
@@ -60,6 +59,7 @@ class PostListContainer extends Component {
           })
           .then(response => response.json())
           .then( (response ) => {
+            this.props.fetchData('http://localhost:3001/posts')
             console.log("Post Delete successfully");
         });
 

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom'
+import Error404Component from '../Error404Component'
 
 
 class PostListComponent extends Component {
 
     renderTable() {
         if (!this.props.posts || this.props.posts.length === 0) {
-          return null;
+          return <Error404Component />;
         } else {
           return <table className="table table-striped table-responsive">
           <thead className="thead-light">

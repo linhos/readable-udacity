@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { postDetailFetchData, postDetailVoteUpAction, postDetailVoteDownAction } from '../../actions'
 //components
 import PostDetailComponent from '../../components/PostDetailComponent'
-
+import Error404Component from '../../components/Error404Component'
 import PostCommentContainer from '../PostCommentContainer'
 
 import history from '../../history' 
@@ -66,18 +66,25 @@ class PostDetailContainer extends Component {
         history.push('/posts/')
     }
 
-    render () {
+    renderTable () {
+        if (this.props.state.posts.post.error) {
+            return <Error404Component />;
+          } else {
+              return (<span>
+              <PostDetailComponent 
+                  post = {this.props.state.posts.post} 
+                  voteUp = {this.onClickVoteUp} 
+                  voteDown = {this.onclickVoteDown}
+                  delete = {this.onClickDelete} />
+              <hr />
+              <PostCommentContainer postId = {this.props.props.match.params.id} />
+          </span>)
+          }
+    }
 
+    render () {
         return (
-            <span>
-                <PostDetailComponent 
-                    post = {this.props.state.posts.post} 
-                    voteUp = {this.onClickVoteUp} 
-                    voteDown = {this.onclickVoteDown}
-                    delete = {this.onClickDelete} />
-                <hr />
-                <PostCommentContainer postId = {this.props.props.match.params.id} />
-            </span>
+            this.renderTable()
         )
     }
 }

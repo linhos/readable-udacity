@@ -40,6 +40,7 @@ class PostCommentContainer extends Component {
           })
           .then(response => response.json())
           .then( (response ) => {
+            this.props.commentsFetchData(this.props.postId)
             console.log("Delete successfully");
         });
     }
@@ -63,6 +64,7 @@ class PostCommentContainer extends Component {
     render () {
         return (
             <span>
+                
                 <PostCommentComponent 
                     comments={this.props.state.posts.comments } 
                     voteUp = {this.onClickVoteUp} 
@@ -70,6 +72,7 @@ class PostCommentContainer extends Component {
                     delete = {this.onClickDelete}
                 />
                 <hr />
+                
                 <CommentAddComponent postId = {this.props.postId}  commentsFetchData = {this.props.commentsFetchData}/>
             </span>
         )

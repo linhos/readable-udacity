@@ -5,6 +5,15 @@ import { Link } from 'react-router-dom';
 
 class PostCommentComponent extends Component {
 
+    // Iniciamos el estado
+    constructor(props) {
+        super(props);
+
+        this.state = { 
+            message: false,
+        }
+    }
+
     render (){
 
         return (
