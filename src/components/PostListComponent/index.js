@@ -51,6 +51,7 @@ class PostListComponent extends Component {
                 <td><button type="button" onClick={() => this.props.voteUp(post.id)} className="btn btn-primary btn-sm">Vote Up</button></td>
                 <td><button type="button" onClick={() => this.props.voteDown(post.id)} className="btn btn-warning btn-sm">Vote Down</button></td>
                 <td><button type="button" onClick={() => this.props.delete(post.id)} className="btn btn-danger btn-sm">Delete</button></td>
+                <td><Link className="btn btn-link btn-sm" to={`/posts/detail/${post.id}/`} >Edit</Link></td>
             </tr>
                    
             ))}
