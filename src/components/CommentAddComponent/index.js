@@ -2,6 +2,10 @@
 import React, {Component} from 'react'
 import serializeForm from 'form-serialize'
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+
+//actions
+import {commentsFetchData, commentVoteDownAction, commentVoteUpAction} from '../../actions'
 
 
 class CommentAddComponent extends Component {
@@ -10,7 +14,9 @@ class CommentAddComponent extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { message: false }
+        this.state = { 
+            message: false,
+        }
     }
 
     onSubmit = (e) => { 
@@ -39,7 +45,8 @@ class CommentAddComponent extends Component {
         .then(response => response.json())
         .then( (response ) => {
             this.setState(state => ({
-            message: 'Comment created succesfully',
+                message: 'Comment created succesfully',
+                comments: this.props.commentsFetchData(this.props.postId)
             }))
             console.log("Post save successfully");
     })};
@@ -79,4 +86,14 @@ class CommentAddComponent extends Component {
 
 }
 
-export default CommentAddComponent
+const mapStateToProps = state => {
+    return {state}
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        commentsFetchData: (value) => dispatch(commentsFetchData(value)),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentAddComponent)

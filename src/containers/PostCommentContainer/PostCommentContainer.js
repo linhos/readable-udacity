@@ -16,6 +16,7 @@ class PostCommentContainer extends Component {
         this.props.commentsFetchData(this.props.postId)
     }
 
+
     onClickVoteDown = value => {
         fetch(`http://localhost:3001/comments/${value}`, {
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
@@ -69,7 +70,7 @@ class PostCommentContainer extends Component {
                     delete = {this.onClickDelete}
                 />
                 <hr />
-                <CommentAddComponent postId = {this.props.postId} />
+                <CommentAddComponent postId = {this.props.postId}  commentsFetchData = {this.props.commentsFetchData}/>
             </span>
         )
     }
