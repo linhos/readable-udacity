@@ -47,6 +47,22 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <div className="col">
+            <ul className="nav">
+            <li className="nav-item">
+                  <a className="nav-link" href="/">Posts</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link disabled" href="#">Categories: </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/react/posts">React</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/redux/posts">Redux</a>
+                </li>
+              </ul>
+            </div>
+            <div className="col">
 
               <Route exact path="/posts/add" component={this.PostAddContainer} />
 
