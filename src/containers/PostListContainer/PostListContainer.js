@@ -18,6 +18,10 @@ class PostListContainer extends Component {
         this.props.fetchData('http://localhost:3001/posts')
     }
 
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps)
+    }
+
     onClickVoteUp = value => {
         fetch(`http://localhost:3001/posts/${value}`, {
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 

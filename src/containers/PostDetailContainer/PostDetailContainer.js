@@ -2,6 +2,9 @@
 import React, { Component } from 'react'
 //Redux
 import { connect } from 'react-redux'
+
+import { push } from 'react-router-redux';
+
 //actions
 import { postDetailFetchData, postDetailVoteUpAction, postDetailVoteDownAction } from '../../actions'
 //components
@@ -53,7 +56,6 @@ class PostDetailContainer extends Component {
     }
 
     onClickDelete = value => {
-        console.log(this.props.history)
         fetch(`http://localhost:3001/posts/${value}`, {
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
             method: 'DELETE',
@@ -61,13 +63,16 @@ class PostDetailContainer extends Component {
           .then(response => response.json())
           .then( (response ) => {
             console.log("Post Delete successfully");
+            history.replace('/posts')
+            
         });
 
-        history.push('/posts/')
+       
     }
 
     renderTable () {
-        if (this.props.state.posts.post.error) {
+        
+        if (this.props.state.posts.post.error || Object.keys(this.props.state.posts.post).length === 0) {
             return <Error404Component />;
           } else {
               return (<span>
@@ -84,7 +89,7 @@ class PostDetailContainer extends Component {
 
     render () {
         return (
-            this.renderTable()
+           this.renderTable()
         )
     }
 }
