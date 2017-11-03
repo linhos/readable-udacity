@@ -18,7 +18,6 @@ import history from '../../history'
 class PostDetailContainer extends Component {
 
     componentDidMount() {
-
         this.props.postDetailFetchData(`http://localhost:3001/posts/${this.props.props.match.params.id}/`)
     }
 
@@ -63,7 +62,7 @@ class PostDetailContainer extends Component {
           .then(response => response.json())
           .then( (response ) => {
             console.log("Post Delete successfully");
-            history.replace('/posts')
+            this.props.props.history.push('/')
             
         });
 
