@@ -8,22 +8,19 @@ import {postCommentFetchData, itemsFetchData, postVoteDownAction, postVoteUpActi
 import PostListComponent from '../../components/PostListComponent'
 
 import { Redirect } from 'react-router'
-
-
 import history from '../../history' 
+import {api} from '../../actions/constants'
+
 
 class PostListContainer extends Component {
 
     componentDidMount() {
-        this.props.fetchData('http://localhost:3001/posts')
+        this.props.fetchData(`${api}/posts`)
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
-    }
 
     onClickVoteUp = value => {
-        fetch(`http://localhost:3001/posts/${value}`, {
+        fetch(`${api}/posts/${value}`, {
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
             method: 'POST',
             body: JSON.stringify({
@@ -40,7 +37,7 @@ class PostListContainer extends Component {
 
     onClickVoteDown = value => {
         
-        fetch(`http://localhost:3001/posts/${value}`, {
+        fetch(`${api}/posts/${value}`, {
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
             method: 'POST',
             body: JSON.stringify({
@@ -57,13 +54,13 @@ class PostListContainer extends Component {
 
     onClickDelete = value => {
         console.log(this.props.history)
-        fetch(`http://localhost:3001/posts/${value}`, {
+        fetch(`${api}/posts/${value}`, {
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
             method: 'DELETE',
           })
           .then(response => response.json())
           .then( (response ) => {
-            this.props.fetchData('http://localhost:3001/posts')
+            this.props.fetchData('${api}/posts')
             console.log("Post Delete successfully");
         });
 

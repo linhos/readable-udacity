@@ -6,12 +6,13 @@ import PostEditComponent from '../../components/PostEditComponent'
 import {connect} from 'react-redux'
 //Action
 import { postDetailFetchData } from '../../actions'
+import {api} from '../../actions/constants'
 
 
 class PostEditContainer extends Component {
 
     componentDidMount() {
-        this.props.postDetailFetchData(`http://localhost:3001/posts/${this.props.props.match.params.id}/`)
+        this.props.postDetailFetchData(`${api}/posts/${this.props.props.match.params.id}/`)
     }
 
     render (){

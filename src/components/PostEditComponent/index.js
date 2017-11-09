@@ -1,7 +1,7 @@
-
 import React, {Component} from 'react'
 import serializeForm from 'form-serialize'
 import { Link } from 'react-router-dom';
+import {api} from '../../actions/constants'
 
 
 class PostEditComponent extends Component {
@@ -22,7 +22,7 @@ class PostEditComponent extends Component {
         e.preventDefault();
         const values = serializeForm(e.target, {hash: true})
 
-        fetch(`http://localhost:3001/posts/${this.props.post.id}`, {
+        fetch(`${api}/posts/${this.props.post.id}`, {
             method: "PUT",
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
         

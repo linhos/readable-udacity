@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 
 //actions
 import {commentsFetchData, commentVoteDownAction, commentVoteUpAction} from '../../actions'
+import {api} from '../../actions/constants'
 
 
 class CommentAddComponent extends Component {
@@ -27,7 +28,7 @@ class CommentAddComponent extends Component {
         let timestamp = new Date().getTime()
         let randomId = Math.random().toString(36).substring(7);
 
-        fetch(`http://localhost:3001/comments`, {
+        fetch(`${api}/comments`, {
             method: "POST",
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
         

@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import serializeForm from 'form-serialize'
 import { Link } from 'react-router-dom'
+import {api} from '../../actions/constants'
+
 
 class PostAddComponent extends Component {
 
@@ -17,12 +19,10 @@ class PostAddComponent extends Component {
 
       const values = serializeForm(e.target, {hash: true})
 
-      console.log(values)
-
       let timestamp = new Date().getTime()
       let randomId = Math.random().toString(36).substring(7);
 
-      fetch(`http://localhost:3001/posts`, {
+      fetch(`${api}/posts`, {
           method: "POST",
           headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
       

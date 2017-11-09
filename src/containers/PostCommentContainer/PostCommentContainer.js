@@ -7,6 +7,7 @@ import CommentAddComponent from '../../components/CommentAddComponent'
 
 //actions
 import {commentsFetchData, commentVoteDownAction, commentVoteUpAction} from '../../actions'
+import {api} from '../../actions/constants'
 
 
 class PostCommentContainer extends Component {
@@ -18,7 +19,7 @@ class PostCommentContainer extends Component {
 
 
     onClickVoteDown = value => {
-        fetch(`http://localhost:3001/comments/${value}`, {
+        fetch(`${api}/comments/${value}`, {
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
             method: 'POST',
             body: JSON.stringify({
@@ -34,7 +35,7 @@ class PostCommentContainer extends Component {
     }
 
     onClickDelete = value => {
-        fetch(`http://localhost:3001/comments/${value}`, {
+        fetch(`${api}/comments/${value}`, {
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
             method: 'DELETE',
           })
@@ -46,7 +47,7 @@ class PostCommentContainer extends Component {
     }
 
     onClickVoteUp = value => {
-        fetch(`http://localhost:3001/comments/${value}`, {
+        fetch(`${api}/comments/${value}`, {
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
             method: 'POST',
             body: JSON.stringify({

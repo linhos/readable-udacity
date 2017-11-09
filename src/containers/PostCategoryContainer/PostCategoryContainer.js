@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 //actions
 import {PostCategoryListAction} from '../../actions'
 import PostCategoryComponent from '../../components/PostCategoryComponent'
+import {api} from '../../actions/constants'
 
 
 class PostCategoryContainer extends Component {
@@ -18,7 +19,7 @@ class PostCategoryContainer extends Component {
     }
 
     fetchPostsCategory(category) {
-        fetch(`http://localhost:3001/${category}/posts`, {
+        fetch(`${api}/${category}/posts`, {
             headers: { 'Authorization': 'mi-fake-header' }
         })
         .then(res=>{

@@ -13,16 +13,17 @@ import Error404Component from '../../components/Error404Component'
 import PostCommentContainer from '../PostCommentContainer'
 
 import history from '../../history' 
+import {api} from '../../actions/constants'
 
 
 class PostDetailContainer extends Component {
 
     componentDidMount() {
-        this.props.postDetailFetchData(`http://localhost:3001/posts/${this.props.props.match.params.id}/`)
+        this.props.postDetailFetchData(`${api}/posts/${this.props.props.match.params.id}/`)
     }
 
     onClickVoteUp = value => {
-        fetch(`http://localhost:3001/posts/${value}`, {
+        fetch(`${api}/posts/${value}`, {
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
             method: 'POST',
             body: JSON.stringify({
@@ -39,7 +40,7 @@ class PostDetailContainer extends Component {
 
     onclickVoteDown = value => {
         
-        fetch(`http://localhost:3001/posts/${value}`, {
+        fetch(`${api}/posts/${value}`, {
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
             method: 'POST',
             body: JSON.stringify({
@@ -55,7 +56,7 @@ class PostDetailContainer extends Component {
     }
 
     onClickDelete = value => {
-        fetch(`http://localhost:3001/posts/${value}`, {
+        fetch(`${api}/posts/${value}`, {
             headers: { 'Accept': 'application/json', 'Authorization': 'mi-fake-header','Content-Type': 'application/json' }, 
             method: 'DELETE',
           })
