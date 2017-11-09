@@ -34,11 +34,7 @@ class PostDetailComponent extends Component {
 
                         <tr>
                             <td>{this.props.post.id}</td>
-                            <td>
-                                <Link className="btn btn-link btn-sm" to={`/posts/edit/${this.props.post.id}/`} >
-                                {this.props.post.title} <i className="fa fa-pencil" aria-hidden="true"></i>
-                                </Link>
-                            </td>
+                            <td>{this.props.post.title}</td>
                             <td>{this.props.post.body}</td>
                             <td>{this.props.post.author}</td>
                             <td>{this.props.post.voteScore}</td>

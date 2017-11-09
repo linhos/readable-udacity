@@ -1,69 +1,22 @@
-
-
-export const POST_LIST_SUCCESS = 'POST_LIST_SUCCESS'
-
-export const POST_LIST_PENDING = 'POST_LIST_PENDING'
-
-export const POST_COMMENT_SUCCESS = 'POST_COMMENT_SUCCESS'
-
-export const POST_COMMENT_PENDING = 'POST_COMMENT_PENDING'
-
-export const COMMENT_VOTE_UP = 'COMMENT_VOTE_UP'
-
-export const COMMENT_VOTE_DOWN = 'COMMENT_VOTE_DOWN'
-
-export const POST_VOTE_UP = 'POST_VOTE_UP'
-
-export const POST_VOTE_DOWN = 'POST_VOTE_DOWN'
-
-export const POST_DETAIL_VOTE_UP = 'POST_DETAIL_VOTE_UP'
-
-export const POST_DETAIL_VOTE_DOWN = 'POST_DETAIL_VOTE_DOWN'
-
-export const POST_DETAIL_SUCCESS = 'POST_DETAIL_SUCCESS'
-
-export const POST_DETAIL_PENDING = 'POST_DETAIL_PENDING'
-
-export const COMMENT_EDIT_SUCCESS = 'COMMENT_EDIT_SUCCESS'
-
-export const COMMENT_EDIT_PENDING = 'COMMENT_EDIT_PENDING'
-
-export const POST_CATEGORY_LIST = 'POST_CATEGORY_LIST'
-
-export const SORT_BY_SCORE = 'SORT_BY_SCORE'
-
-export const COMMENTS_LIST_SUCCESS = 'COMMENTS_LIST_SUCCESS'
-
-export const COMMENTS_LIST_PENDING = 'COMMENTS_LIST_PENDING'
-
-export const POST_ADD = 'POST_ADD'
-
-export const EDIT_PENDING = 'EDIT_PENDING'
-
-export const EDIT_SUCCESS = 'EDIT_SUCCESS'
-
-export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS'
-
-export const DELETE_POST_PENDING = 'DELETE_POST_PENDING'
-
+import * as types from './types.js';
 
 export function postListSuccessAction (posts) {
     return {
-        type: POST_LIST_SUCCESS,
+        type: types.POST_LIST_SUCCESS,
         posts
     }
 }
 
 export function postListPendingAction (bool) {
     return {
-        type: POST_LIST_PENDING,
+        type: types.POST_LIST_PENDING,
         pending: bool
     }
 }
 
 export const postCommentSuccessAction = (comments, postId) => {
     return {
-        type: POST_COMMENT_SUCCESS,
+        type: types.POST_COMMENT_SUCCESS,
         comments,
         postId
     }
@@ -71,105 +24,105 @@ export const postCommentSuccessAction = (comments, postId) => {
 
 export function postCommentPendingAction (bool) {
     return {
-        type: POST_COMMENT_PENDING,
+        type: types.POST_COMMENT_PENDING,
         pending: bool
     }
 }
 
 export const commentVoteUpAction = commentId => {
     return {
-        type: COMMENT_VOTE_UP,
+        type: types.COMMENT_VOTE_UP,
         commentId
     }
 }
 
 export const commentVoteDownAction = commentId => {
     return {
-        type: COMMENT_VOTE_DOWN,
+        type: types.COMMENT_VOTE_DOWN,
         commentId
     }
 }
 
 export const postVoteUpAction = postId => {
     return {
-        type: POST_VOTE_UP,
+        type: types.POST_VOTE_UP,
         postId
     }
 }
 
 export const postVoteDownAction = postId => {
     return {
-        type: POST_VOTE_DOWN,
+        type: types.POST_VOTE_DOWN,
         postId
     }
 }
 
 export const postDetailVoteUpAction = postId => {
     return {
-        type: POST_DETAIL_VOTE_UP,
+        type: types.POST_DETAIL_VOTE_UP,
         postId
     }
 }
 
 export const postDetailVoteDownAction = postId => {
     return {
-        type: POST_DETAIL_VOTE_DOWN,
+        type: types.POST_DETAIL_VOTE_DOWN,
         postId
     }
 }
 
 export function postDetailSuccessAction (post) {
     return {
-        type: POST_DETAIL_SUCCESS,
+        type: types.POST_DETAIL_SUCCESS,
         post
     }
 }
 
 export function postDetailPendingAction (bool) {
     return {
-        type: POST_DETAIL_PENDING,
+        type: types.POST_DETAIL_PENDING,
         pending: bool
     }
 }
 
 export function commentEditSuccessAction (comment) {
     return {
-        type: COMMENT_EDIT_SUCCESS,
+        type: types.COMMENT_EDIT_SUCCESS,
         comment
     }
 }
 
 export function commentEditPendingAction (bool) {
     return {
-        type: COMMENT_EDIT_PENDING,
+        type: types.COMMENT_EDIT_PENDING,
         pending: bool
     }
 }
 
 export const PostCategoryListAction = categoryPosts => {
     return {
-        type: POST_CATEGORY_LIST,
+        type: types.POST_CATEGORY_LIST,
         categoryPosts
     }
 }
 
 export const sortByScoreAction = (sort, posts) => {
     return {
-        type: SORT_BY_SCORE,
+        type: types.SORT_BY_SCORE,
         posts
     }
 }
 
 export function commentsSuccessAction (comments) {
     return {
-        type: COMMENTS_LIST_SUCCESS,
+        type: types.COMMENTS_LIST_SUCCESS,
         comments
     }
 }
 
 export function commentsPendingAction (bool) {
     return {
-        type: COMMENTS_LIST_PENDING,
+        type: types.COMMENTS_LIST_PENDING,
         pending: bool
     }
 }
@@ -177,14 +130,14 @@ export function commentsPendingAction (bool) {
 
 export const postAddAction = post => {
     return {
-        type: POST_ADD,
+        type: types.POST_ADD,
         post
     }
 }
 
 export const editPendingAction = commentId => {
     return {
-        type: EDIT_PENDING,
+        type: types.EDIT_PENDING,
         commentId
     }
 }
@@ -192,7 +145,7 @@ export const editPendingAction = commentId => {
 export const editSuccessAction = comment => {
     
     return {
-        type: EDIT_SUCCESS,
+        type: types.EDIT_SUCCESS,
         comment
     }
 }
@@ -200,14 +153,14 @@ export const editSuccessAction = comment => {
 export const deletePostSuccessAction = posts => {
     
     return {
-        type: DELETE_POST_SUCCESS,
+        type: types.DELETE_POST_SUCCESS,
         posts
     }
 }
 
 export function deletePostPendingAction (bool) {
     return {
-        type: DELETE_POST_PENDING,
+        type: types.DELETE_POST_PENDING,
         pending: bool
     }
 }
