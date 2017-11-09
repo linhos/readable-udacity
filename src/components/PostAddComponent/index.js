@@ -17,6 +17,8 @@ class PostAddComponent extends Component {
 
       const values = serializeForm(e.target, {hash: true})
 
+      console.log(values)
+
       let timestamp = new Date().getTime()
       let randomId = Math.random().toString(36).substring(7);
 
@@ -31,7 +33,7 @@ class PostAddComponent extends Component {
             timestamp: timestamp,
             title: values.title,
             body: values.body,
-            category: 'redux',
+            category: values.category,
             author: 'carlos'
           })
         })
@@ -64,6 +66,13 @@ class PostAddComponent extends Component {
                 <div className="form-group">  
                   <label htmlFor="title">Title</label>
                   <input type="text" className="form-control" name="title" id="title" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="category">Category</label>
+                  <select className="form-control" id="category" name="category">
+                    <option key='react' value='react'>react</option>
+                    <option key='redux' value='redux'>redux</option>
+                  </select>
                 </div>
                 <div className="form-group"> 
                   <label htmlFor="title">Body</label>
