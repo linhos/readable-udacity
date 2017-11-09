@@ -12,7 +12,7 @@ class CommentEditComponent extends Component {
 
         this.state = { 
             message: false,
-            body: this.props.comment.body
+            body: ''
         }
     }
 
