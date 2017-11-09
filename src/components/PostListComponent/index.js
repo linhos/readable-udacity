@@ -33,7 +33,7 @@ class PostListComponent extends Component {
                     ? post.timestamp.toString()
                     : post.id+post.author
                 }>
-                <td><Link className="btn btn-link btn-sm" to={`/posts/detail/${post.id}/`} >{post.title} <i className="fa fa-info-circle" aria-hidden="true"></i></Link></td>
+                <td><Link className="btn btn-link btn-sm" to={`/posts/${post.category}/${post.id}/`} >{post.title} <i className="fa fa-info-circle" aria-hidden="true"></i></Link></td>
                 <td>{post.body}</td>
                 <td>
         
@@ -51,7 +51,7 @@ class PostListComponent extends Component {
                 <td><button type="button" onClick={() => this.props.voteUp(post.id)} className="btn btn-primary btn-sm">Vote Up</button></td>
                 <td><button type="button" onClick={() => this.props.voteDown(post.id)} className="btn btn-warning btn-sm">Vote Down</button></td>
                 <td><button type="button" onClick={() => this.props.delete(post.id)} className="btn btn-danger btn-sm">Delete</button></td>
-                <td><Link className="btn btn-link btn-sm" to={`/posts/detail/${post.id}/`} >Edit</Link></td>
+                <td><Link className="btn btn-link btn-sm" to={`/posts/${post.category}/${post.id}/`} >Edit</Link></td>
             </tr>
                    
             ))}

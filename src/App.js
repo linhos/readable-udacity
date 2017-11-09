@@ -68,7 +68,7 @@ class App extends Component {
 
               <Route exact path="/posts/detail/:id" component={this.PostDetailContainer} />
               
-              <Route exact path="/posts/edit/:id" component={this.PostEditContainer} />
+              <Route exact path="/posts/:category/:id" component={this.PostEditContainer} />
 
               <Route exact path="/comments/edit/:id" component={this.CommentEditContainer} />
 
